@@ -141,7 +141,6 @@ h2 { margin: 2rem 0 0.75rem; font-size: 1.2rem; }
 .campo.con-error input, .campo.con-error select, .campo.con-error textarea { border-color: var(--peligro); }
 .acciones-form { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 .vista-previa { max-width: 220px; border-radius: 10px; border: 1px solid var(--borde); margin-top: 0.5rem; display: block; }
-/* El atributo hidden NO gana contra "display: block" de la clase: hay que reforzarlo */
 .vista-previa[hidden] { display: none; }
 
 .login { max-width: 420px; margin: 2rem auto; }
