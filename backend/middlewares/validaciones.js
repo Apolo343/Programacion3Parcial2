@@ -53,9 +53,7 @@ const validarListadoProductos = [
 ];
 
 /**
- * Alta y modificación de productos.
- * @param {boolean} imagenObligatoria true en el alta; false al modificar
- *        (si no se sube una nueva, se conserva la anterior).
+ * @param {boolean} imagenObligatoria 
  */
 const validarProducto = (imagenObligatoria) => [
   body('nombre')
