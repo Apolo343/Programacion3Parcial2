@@ -1,0 +1,9 @@
+<%- include('partials/header', { titulo: 'Error ' + codigo }) %>
+
+<section class="tarjeta" style="max-width:520px;margin:2rem auto;text-align:center">
+  <h1>Error <%= codigo %></h1>
+  <p><%= mensaje %></p>
+  <a class="btn" href="/admin/login">Volver al inicio</a>
+</section>
+
+<%- include('partials/footer') %>

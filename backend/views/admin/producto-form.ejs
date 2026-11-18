@@ -1,0 +1,65 @@
+<%#
+  Formulario de ALTA y MODIFICACIÓN (una sola vista para las dos cosas).
+  `esEdicion` decide el título, la URL de destino y el texto del botón.
+
+  TEORÍA: enctype="multipart/form-data" es OBLIGATORIO para poder enviar
+  archivos (la imagen). Sin eso el navegador manda solo el nombre del archivo.
+%>
+<%- include('../partials/header', { titulo: esEdicion ? 'Modificar producto' : 'Agregar producto' }) %>
+
+<h1><%= esEdicion ? 'Modificar producto #' + producto.id : 'Agregar producto' %></h1>
+<p class="subtitulo">
+  <%= esEdicion ? 'Cambiá los datos que necesites. Si no elegís una imagen nueva se conserva la actual.' : 'Completá todos los datos y cargá una imagen. El producto se crea activo.' %>
+</p>
+
+<section class="tarjeta" style="max-width:640px">
+  <form method="POST"
+        action="<%= esEdicion ? '/admin/productos/' + producto.id + '/editar' : '/admin/productos' %>"
+        enctype="multipart/form-data" novalidate>
+
+    <div class="campo <%= errores.nombre ? 'con-error' : '' %>">
+      <label for="nombre">Nombre</label>
+      <input type="text" id="nombre" name="nombre" maxlength="100" value="<%= valores.nombre || '' %>" required>
+      <% if (errores.nombre) { %><p class="error"><%= errores.nombre %></p><% } %>
+    </div>
+
+    <div class="campo <%= errores.descripcion ? 'con-error' : '' %>">
+      <label for="descripcion">Descripción</label>
+      <textarea id="descripcion" name="descripcion" rows="3" maxlength="500" required><%= valores.descripcion || '' %></textarea>
+      <% if (errores.descripcion) { %><p class="error"><%= errores.descripcion %></p><% } %>
+    </div>
+
+    <div class="campo <%= errores.precio ? 'con-error' : '' %>">
+      <label for="precio">Precio (ARS)</label>
+      <input type="number" id="precio" name="precio" step="0.01" min="0.01" value="<%= valores.precio || '' %>" required>
+      <% if (errores.precio) { %><p class="error"><%= errores.precio %></p><% } %>
+    </div>
+
+    <div class="campo <%= errores.categoria ? 'con-error' : '' %>">
+      <label for="categoria">Categoría</label>
+      <select id="categoria" name="categoria" required>
+        <option value="">Elegí una categoría…</option>
+        <% Object.entries(categorias).forEach(([clave, etiqueta]) => { %>
+          <option value="<%= clave %>" <%= valores.categoria === clave ? 'selected' : '' %>><%= etiqueta %></option>
+        <% }) %>
+      </select>
+      <% if (errores.categoria) { %><p class="error"><%= errores.categoria %></p><% } %>
+    </div>
+
+    <div class="campo <%= errores.imagen ? 'con-error' : '' %>">
+      <label for="imagen">Imagen <%= esEdicion ? '(opcional: reemplaza la actual)' : '' %></label>
+      <input type="file" id="imagen" name="imagen" accept="image/png,image/jpeg,image/webp,image/gif">
+      <% if (errores.imagen) { %><p class="error"><%= errores.imagen %></p><% } %>
+      <%# Muestra la imagen actual (edición) o la vista previa de la nueva %>
+      <img id="vista-previa" class="vista-previa" alt="Vista previa de la imagen"
+           src="<%= esEdicion ? producto.imagen : '' %>" <%= esEdicion ? '' : 'hidden' %>>
+    </div>
+
+    <div class="acciones-form">
+      <button type="submit" class="btn"><%= esEdicion ? 'Guardar cambios' : 'Agregar' %></button>
+      <a class="btn btn--sec" href="/admin/dashboard">Cancelar</a>
+    </div>
+  </form>
+</section>
+
+<%- include('../partials/footer') %>

@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= titulo %> · <%= empresa %></title>
+  <link rel="icon" type="image/svg+xml" href="/img/favicon.svg">
+  <link rel="stylesheet" href="/css/admin.css">
+  <script src="/js/tema.js"></script>
+</head>
+<body>
+  <header class="cabecera">
+    <div class="cabecera__marca">
+      <img class="logo" src="/img/logo.svg" alt="Logo de <%= empresa %>">
+      <div>
+        <span class="nombre-app"><%= empresa %></span>
+        <span class="alumnos">Alumnos: <%= alumnos.join(' · ') %></span>
+      </div>
+    </div>
+
+    <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false">☰</button>
+
+    <%# Barra de navegación: cambia según haya sesión o no. Siempre visible. %>
+    <nav id="menu" class="nav" aria-label="Navegación principal">
+      <% if (admin) { %>
+        <a href="/admin/dashboard" class="<%= rutaActual.startsWith('/admin/dashboard') ? 'activo' : '' %>">Dashboard</a>
+        <a href="/admin/productos/nuevo" class="<%= rutaActual.startsWith('/admin/productos/nuevo') ? 'activo' : '' %>">Agregar producto</a>
+        <a href="<%= frontendUrl %>" target="_blank" rel="noopener">Ver tienda</a>
+        <form action="/admin/logout" method="POST">
+          <button type="submit" class="nav__salir">Salir (<%= admin.nombre %>)</button>
+        </form>
+      <% } else { %>
+        <a href="/admin/login" class="<%= rutaActual.startsWith('/admin/login') ? 'activo' : '' %>">Ingresar</a>
+        <a href="<%= frontendUrl %>">Ir a la tienda</a>
+      <% } %>
+      <button type="button" class="nav__tema" id="btn-tema" aria-label="Cambiar tema claro u oscuro"></button>
+    </nav>
+  </header>
+
+  <main class="contenedor">
