@@ -1,0 +1,7 @@
+{
+  "name": "luckytech-frontend",
+  "version": "1.0.0",
+  "description": "Frontend TP Integrador Programacion III (autoservicio)",
+  "scripts": { "start": "node serve.js" },
+  "license": "ISC"
+}

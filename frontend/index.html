@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bienvenida · LuckyTech</title>
+  <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/tema.js"></script>
+</head>
+<body>
+  <header id="app-header"></header>
+
+  <main class="contenedor">
+    <section class="bienvenida tarjeta">
+      <img class="logo-grande" src="img/logo.svg" alt="Logo LuckyTech">
+      <h1>¡Bienvenido a LuckyTech!</h1>
+      <p class="subtitulo">Tecnología a tu alcance: armá tu compra en el autoservicio.</p>
+
+      <div id="aviso" class="aviso aviso--error" role="alert" hidden></div>
+
+      <form id="form-bienvenida" novalidate>
+        <div class="campo" id="campo-nombre">
+          <label for="nombre">¿Cómo te llamás?</label>
+          <input type="text" id="nombre" name="nombre" maxlength="50" autocomplete="given-name" placeholder="Tu nombre" required>
+          <p class="error" id="error-nombre"></p>
+        </div>
+        <button type="submit" class="btn btn--bloque">Continuar</button>
+      </form>
+    </section>
+  </main>
+
+  <footer id="app-footer"></footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/bienvenida.js"></script>
+</body>
+</html>

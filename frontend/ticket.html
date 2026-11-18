@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ticket · LuckyTech</title>
+  <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/tema.js"></script>
+</head>
+<body>
+  <header id="app-header"></header>
+
+  <main class="contenedor">
+    <section class="ticket tarjeta" id="ticket">
+      <h1 id="t-empresa"></h1>
+      <p class="subtitulo" style="text-align:center">Ticket de compra</p>
+      <div class="ticket__meta">
+        <span><strong>Cliente:</strong> <span id="t-cliente"></span></span>
+        <span><strong>Fecha:</strong> <span id="t-fecha"></span></span>
+        <span><strong>N° de compra:</strong> <span id="t-numero"></span></span>
+      </div>
+      <table>
+        <thead><tr><th>Producto</th><th class="num">Cant.</th><th class="num">P. unit.</th><th class="num">Subtotal</th></tr></thead>
+        <tbody id="t-lineas"></tbody>
+        <tfoot><tr><td colspan="3">TOTAL</td><td class="num" id="t-total"></td></tr></tfoot>
+      </table>
+      <p class="ticket__gracias">¡Gracias por tu compra!</p>
+    </section>
+
+    <div id="aviso-pdf" class="aviso aviso--error" role="alert" hidden style="margin-top:1rem"></div>
+    <div class="acciones" style="justify-content:center;margin-top:1.25rem">
+      <button type="button" class="btn" id="btn-pdf">⬇ Descargar PDF</button>
+      <button type="button" class="btn btn--sec" id="btn-salir">Salir</button>
+      <button type="button" class="btn btn--sec" id="btn-nueva">Nueva compra</button>
+    </div>
+  </main>
+
+  <footer id="app-footer"></footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/ticket.js"></script>
+</body>
+</html>

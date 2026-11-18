@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Productos · LuckyTech</title>
+  <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/tema.js"></script>
+</head>
+<body>
+  <header id="app-header"></header>
+
+  <main class="contenedor">
+    <h1>Productos</h1>
+    <p class="subtitulo" id="saludo"></p>
+
+    <div class="pestanas" role="tablist" aria-label="Categorías" id="pestanas"></div>
+
+    <div id="aviso" class="aviso aviso--error" role="alert" hidden></div>
+    <div id="grilla" class="grilla" aria-live="polite"></div>
+    <nav id="paginacion" class="paginacion" aria-label="Paginación de productos"></nav>
+
+    <div class="barra-carrito" id="barra-carrito" hidden>
+      <span id="barra-resumen"></span>
+      <a class="btn" href="carrito.html">Ver carrito</a>
+    </div>
+  </main>
+
+  <footer id="app-footer"></footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/productos.js"></script>
+</body>
+</html>
